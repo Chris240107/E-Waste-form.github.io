@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Awesome Form - Level 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-container">
+    <h1>Super Awesome E-waste form</h1>
+
+    <form id="ewasteForm" class="question-container">
+        <h2>Your details</h2>
+        <div>
+            <label for="username">Full name</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <h2>E-Waste Details</h2>
+        <div>
+            <label for="wastetype">Type of Ewaste</label>
+            <select id="wastetype" name="wastetype" required>
+                <option value="">-- Select a type --</option>
+                <option value="phones">Mobile Phones/Tablets - 2500 points</option>
+                <option value="Laptop">Laptops - 7500 points</option>
+                <option value="Monitor">Monitors/TVs - 9000 points</option>
+                <option value="CPUs">CPUs/Printers - 12000 points</option>
+                <option value="Others">Others - 1000 points</option>
+            </select>
+        </div>
+        <div>
+            <label for="wastequantity">Quantity of Ewaste</label>
+            <input type="number" id="wastequantity" name="wastequantity" min="1" value="1" required>
+        </div>
+        <div>
+            <button type="submit">Submit form and E- waste</button>
+        </div>
+    </form>
+
+    <!-- Custom Message Box -->
+    <div id="messageBox" class="message-box-overlay">
+        <div class="message-box-content">
+            <p id="messageText"></p>
+            <span id="earnedPointsDisplay"></span>
+            <button id="messageBoxClose">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
