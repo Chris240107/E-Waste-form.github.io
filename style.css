@@ -1,6 +1,6 @@
 /* General Body & Typography */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f8f4;
@@ -296,4 +296,17 @@ footer {
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
+}
+
+.anim1 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: moveup 0.6s linear forwards;
+}
+
+@keyframes moveup {
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
