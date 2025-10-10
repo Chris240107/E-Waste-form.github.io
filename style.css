@@ -310,3 +310,7 @@ footer {
         transform: translateY(0px);
     }
 }
+
+.process {
+    background-color: #7fa371;
+}
