@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Waste Collection Request - EcoBin</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <header class="main-header">
+        <nav class="container">
+            <a href="index.html" class="logo">EcoBin ♻️</a>
+            <ul>
+                <li><a href="index.html#mission">Mission</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h2>Fill the E-Waste Disposal Form</h2>
+        <form id="ewasteForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="example@mail.com">
+
+            <label for="itemSelect">E-Waste Item</label>
+            <select id="itemSelect" name="itemSelect">
+                <option value="">--Select Item--</option>
+                <option value="Phones">Phones</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Monitors">Monitors</option>
+                <option value="CPUs">CPUs</option>
+                <option value="Others">Others (Specify Below)</option>
+            </select>
+            
+            <label for="itemText">If 'Others', please specify</label>
+            <input type="text" id="itemText" name="itemText" placeholder="e.g., Old Keyboard, Printer">
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <label for="unit">Unit</label>
+            <select id="unit" name="unit" required>
+                <option value="">--Select--</option>
+                <option value="pieces">Pieces</option>
+                <option value="kg">Kilograms</option>
+            </select>
+
+            <label for="photo">Upload Item Photo (optional)</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments" rows="3" placeholder="Any notes for pickup..."></textarea>
+
+            <div class="checkbox">
+                <input type="checkbox" id="consent" required>
+                <label for="consent">I agree to share my details for collection.</label>
+            </div>
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Request Submitted ✅</h2>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EcoBin. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Paste the Web App URL you copied from Google Apps Script here
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzfUbKGShflSVYlHIBYLajAjAfdTmeUw90OHUOlzYosZ3QgpFEgbVYLTKcP1RcAnAoiLQ/exec'; 
+        
+        const form = document.getElementById("ewasteForm");
+        const modal = document.getElementById("successModal");
+        const closeBtn = document.querySelector(".close");
+        const modalMessage = document.getElementById("modalMessage");
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Disable the button to prevent multiple submissions
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
+            // Use the Fetch API to send the form data to Google Sheets
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    console.log('Success!', response);
+                    
+                    // Show your success modal (you can still calculate points here if you want)
+                    const name = form.name.value;
+                    const itemSelect = form.itemSelect.value;
+                    const itemText = form.itemText.value;
+                    const itemDisplay = (itemSelect === 'Others' && itemText) ? itemText : itemSelect;
+                    const trackingId = "REQ-" + Date.now();
+                    
+                    modalMessage.innerHTML =
+                        `Thank you, <b>${name}</b>! Your request for '<b>${itemDisplay}</b>' has been successfully submitted.<br><br>` +
+                        `<span style='color:black; font-weight:bold;'>Tracking ID: ${trackingId}</span>`;
+                    
+                    modal.style.display = "block";
+                    form.reset(); // Clear the form
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('An error occurred. Please try again.');
+                })
+                .finally(() => {
+                    // Re-enable the button
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit Request';
+                });
+        });
+
+        // Your existing modal close logic
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; };
+        window.onkeydown = (e) => { if (e.key === "Escape") modal.style.display = "none"; };
+    </script>
+</body>
+</html>
