@@ -1,5 +1,6 @@
-fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
+
 <!DOCTYPE html> <!-- SWAGAT HAI SABKO, Tells the browser this is an HTML5 document -->
+
 <html lang="en"> <!-- IS FORM KI BHSHA ANGREZI ME HAI GUYS Starts the HTML document and sets language to English -->
 <head>
   <meta charset="UTF-8"> <!-- IMPORTANT SHI , USE SHIFT AND PRESS "!" TO GENERATE THE BASE STRUCTURE Sets character encoding to UTF-8 -->
@@ -23,34 +24,15 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
       margin: 0; /* Removes default margin */
       font-size: 2rem; /* Sets font size */
     }
-    /* Responsive container for phones */
     .container {
-      width: 95%;
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 16px;
-      background: #ffffff8f;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      width: 90%; /* Container takes 90% of page width */
+      max-width: 600px; /* Maximum width is 600px */
+      margin: 20px auto; /* Centers container and adds top/bottom space */
+      padding: 20px; /* Adds space inside container */
+      background: #ffffff8f; /* Sets container background color */
+      border-radius: 12px; /* Rounds container corners */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Adds shadow for depth */
     }
-    @media (max-width: 600px) {
-      .container {
-        width: 99%;
-        padding: 8px;
-        margin: 8px auto;
-      }
-      h2 {
-        font-size: 1.2rem;
-      }
-      label, input, select, textarea, button {
-        font-size: 1rem;
-      }
-      button {
-        padding: 10px;
-      }
-    }
-
-
     h2 {
       text-align: center; /* Centers heading */
       margin-bottom: 20px; /* Adds space below heading */
@@ -104,47 +86,25 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
       position: fixed; /* Stays in place when scrolling */
       z-index: 100; /* Sits above other elements */
       left: 0; top: 0; /* Starts at top-left corner */
-      width: 100vw; height: 100vh; /* Covers whole screen */
+      width: 100%; height: 100%; /* Covers whole screen */
       background: rgba(0,0,0,0.5); /* Semi-transparent background */
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.3s;
-    }
-    .modal.show {
-      display: flex;
-      opacity: 1;
     }
     .modal-content {
       background: #f9fff9; /* Modal box background */
+      margin: 15% auto; /* Centers modal vertically and horizontally */
       padding: 20px; /* Adds space inside modal */
       border-radius: 10px; /* Rounds modal corners */
-      width: 90vw; /* Modal width */
+      width: 90%; /* Modal width */
       max-width: 400px; /* Maximum modal width */
       text-align: center; /* Centers modal text */
       border: 2px solid #66bb6a; /* Modal border color */
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    @media (max-width: 600px) {
-      .modal-content {
-        width: 95vw;
-        padding: 12px;
-        font-size: 1rem;
-      }
-      .close {
-        font-size: 1.5rem;
-      }
     }
     .close {
-      position: absolute;
-      top: 10px;
-      right: 16px;
+      float: right; /* Moves close button to right */
       font-size: 22px; /* Sets close button size */
       font-weight: bold; /* Makes close button bold */
       color: #2e7d32; /* Sets close button color */
       cursor: pointer; /* Shows pointer on hover */
-      background: none;
-      border: none;
     }
     .close:hover {
       color: #1b5e20; /* Changes close button color on hover */
@@ -155,7 +115,7 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
       background: #388e3c; /* Sets footer background color */
       color: white; /* Sets footer text color */
       margin-top: 30px; /* Adds space above footer */
-    }
+    }    
 
 
     /*IMAGE ADDING PART, WEBSITE KO COOL BANANA HAI BROSKI *smirks* Fullscreen background image */
@@ -180,11 +140,11 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
     }
   </style>
     <title>leaf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- Fullscreen leaf background image -->
     <img src="leaf.jpg" class="leaf-bg" alt="Leaves Background">
-    <!-- Make sure your image is named 'leaf.png' and placed in the same folder as index.html -->
 
 
     <header>
@@ -193,11 +153,9 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
     </header>
 
 
-    <!-- Output message area above the form -->
-    <div id="outputMessage" style="display:none; margin: 0 auto 16px auto; max-width:600px; background:#f9fff9; border:2px solid #66bb6a; border-radius:10px; padding:16px; text-align:center; font-size:1.1rem; font-weight:500; color:#222; box-shadow:0 4px 12px rgba(0,0,0,0.10); position:relative; z-index:3;"></div>
     <div class="container">
-      <h2>Fill the form</h2>
-      <form id="ewasteForm">
+      <h2>Fill the form</h2> <!-- Section heading for the form -->
+      <form id="ewasteForm"> <!-- Starts the form and gives it an ID -->
         <label for="name">Full Name</label> <!-- Label for name input -->
         <input type="text" id="name" name="name" required placeholder="Enter your name">
         <!-- Text box for user's name, required -->
@@ -260,10 +218,22 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
     </div>
 
 
+    <!-- Modal -->
+    <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <!-- Hidden popup for success message -->
+      <div class="modal-content">
+        <span class="close" role="button" aria-label="Close">&times;</span>
+        <!-- 'X' button to close the popup -->
+        <h2 id="modalTitle">Request Submitted ✅</h2> <!-- Modal heading -->
+        <p id="modalMessage"></p> <!-- Where the success message appears -->
+      </div>
+    </div>
     <script>
-    // Get references to form elements
+    // Get references to form and modal elements
     const form = document.getElementById("ewasteForm");
-    const outputMessage = document.getElementById("outputMessage");
+    const modal = document.getElementById("successModal");
+    const closeBtn = document.querySelector(".close");
+    const modalMessage = document.getElementById("modalMessage");
 
 
     // Points mapping for dropdown items
@@ -324,8 +294,8 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
       const itemDisplay = itemText ? itemText : itemSelect;
 
 
-      // Show output above the form, no scrolling needed
-      outputMessage.innerHTML =
+      // Show modal with points info
+      modalMessage.innerHTML =
         "Thank you, <b>" + form.name.value +
         "</b>! Your request for '<b>" + itemDisplay +
         "</b>' has been recorded.<br><br>" +
@@ -333,24 +303,14 @@ fMADE BY THE PENTAGON MITRMANDAL 🗿🗿🗿🗿🗿
         "<span style='color:black; font-weight:bold;'>Points Earned: " + points + "</span>";
 
 
-      outputMessage.style.display = "block";
-      // Optionally, scroll to top so user sees the message instantly
-      window.scrollTo({ top: 0, behavior: "smooth" });
-
-
-      // Optionally reset the form
-      form.reset();
+      modal.style.display = "block";
+      closeBtn.focus();
     });
+
+
+    closeBtn.onclick = () => modal.style.display = "none"; // FINALLYY , THIS IS TO CLOSE THE FINAL OUTPUT OF YOUR PROGRAM FOR ANYHTING W* A KEYBOARD-->
+    window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; };
+    window.onkeydown = (e) => { if (e.key === "Escape") modal.style.display = "none"; };
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
